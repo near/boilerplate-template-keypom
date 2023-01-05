@@ -71,26 +71,22 @@ const AccountDropdown: React.FC = () => {
           )}
           <div className="py-1">
             <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className="text-gray-700 block px-4 py-2 text-sm"
-                  onClick={() => handleSwitchWallet()}
-                >
-                  Switch Wallet
-                </a>
-              )}
+              <a
+                href="#"
+                className="text-gray-700 block px-4 py-2 text-sm"
+                onClick={() => handleSwitchWallet()}
+              >
+                Switch Wallet
+              </a>
             </Menu.Item>
             <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className="text-gray-700 block px-4 py-2 text-sm"
-                  onClick={() => handleSignOut()}
-                >
-                  Log out
-                </a>
-              )}
+              <a
+                href="#"
+                className="text-gray-700 block px-4 py-2 text-sm"
+                onClick={() => handleSignOut()}
+              >
+                Log out
+              </a>
             </Menu.Item>
           </div>
         </Menu.Items>
