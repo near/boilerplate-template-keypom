@@ -6,9 +6,8 @@ import type { WalletSelector, AccountState } from "@near-wallet-selector/core";
 import { setupModal } from "@near-wallet-selector/modal-ui";
 import type { WalletSelectorModal } from "@near-wallet-selector/modal-ui";
 import { setupMyNearWallet } from "@near-wallet-selector/my-near-wallet";
-import { CONTRACT_ID } from "../constants";
-import LedgerIconUrl from "@near-wallet-selector/ledger/assets/ledger-icon.png";
-import MyNearIconUrl from "@near-wallet-selector/my-near-wallet/assets/my-near-wallet-icon.png";
+import { setupNearWallet } from "@near-wallet-selector/near-wallet";
+import { setupSender } from "@near-wallet-selector/sender";
 import { setupLedger } from "@near-wallet-selector/ledger";
 
 declare global {
@@ -30,11 +29,13 @@ const WalletSelectorContext =
 
 type Props = {
   network: "testnet" | "mainnet";
+  createAccessKeyFor: string;
   children: ReactNode;
 };
 
 export const WalletSelectorContextProvider: React.FC<Props> = ({
   network,
+  createAccessKeyFor,
   children,
 }) => {
   const [selector, setSelector] = useState<WalletSelector | null>(null);
@@ -46,11 +47,13 @@ export const WalletSelectorContextProvider: React.FC<Props> = ({
       network,
       debug: true,
       modules: [
-        setupMyNearWallet({ iconUrl: MyNearIconUrl }),
-        setupLedger({ iconUrl: LedgerIconUrl }),
+        setupNearWallet(),
+        setupMyNearWallet(),
+        setupSender(),
+        setupLedger(),
       ],
     });
-    const _modal = setupModal(_selector, { contractId: CONTRACT_ID });
+    const _modal = setupModal(_selector, { contractId: createAccessKeyFor });
     const state = _selector.store.getState();
     setAccounts(state.accounts);
 

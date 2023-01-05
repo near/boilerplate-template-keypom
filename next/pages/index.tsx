@@ -1,11 +1,18 @@
+import { useWalletSelector } from "../components/WalletSelectorContext";
+
 export default function Home() {
+  const { accountId, modal } = useWalletSelector();
+
   return (
-    <div className="relative flex min-h-screen flex-col justify-center overflow-hidden bg-gray-50 py-6 sm:py-12">
+    <div className="relative flex min-h-screen flex-col justify-center overflow-hidden py-6 sm:py-12">
       <div className="absolute inset-0 bg-[url(/img/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
       <div className="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
         <div className="mx-auto max-w-md">
           <div className="divide-y divide-gray-300/50">
             <div className="space-y-6 py-8 text-base leading-7 text-gray-600">
+              {!accountId && (
+                <button onClick={() => modal.show()}>Sign in</button>
+              )}
               <p>
                 An advanced frontend part of React Boilerplate Template
                 including Next.js and Tailwind CSS
