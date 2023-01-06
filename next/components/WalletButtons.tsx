@@ -33,7 +33,7 @@ export const WalletButtons: React.FC = () => {
             Connect with Wallet
           </button>
         )}
-        {accountId && <AccountDropdown></AccountDropdown>}
+        {accountId && <AccountDropdown />}
       </div>
     </>
   );
