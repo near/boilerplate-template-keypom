@@ -1,20 +1,23 @@
 import { WalletSelector } from "@near-wallet-selector/core";
-import { CONTRACT_NAME } from "./constants";
+import { CONTRACT_NAME, NFT_CONTRACT_NAME } from "./constants";
 import { callMethod, viewMethod } from "./contract";
 
 export const getDrops = async (
   walletSelector: WalletSelector,
   accountId: string
 ) => {
-  return await viewMethod(walletSelector, {
+  const response = await viewMethod(walletSelector, {
     contractId: CONTRACT_NAME,
     method: "get_drops_for_owner",
     args: { account_id: accountId },
   });
+  console.log("DROPS", response);
+  return response;
 };
 
 type CreateDrop = {
   drop: {
+    dropId?: string;
     keys: string[];
     initialDeposit: string;
   };
@@ -31,7 +34,7 @@ export const createDrop = async (
   drop: CreateDrop
 ) => {
   const {
-    drop: { keys, initialDeposit },
+    drop: { dropId, keys, initialDeposit },
     nft: { media, id, copies },
   } = drop;
   return await callMethod(walletSelector, accountId, {
@@ -44,6 +47,7 @@ export const createDrop = async (
       initialDeposit,
     }),
     args: {
+      drop_id: dropId,
       public_keys: keys,
       // How much NEAR should a claimed account start with.
       deposit_per_use: "20000000000000000000000", // 0.02 NEAR
@@ -60,7 +64,7 @@ export const createDrop = async (
             {
               account_id_field: "receiver_id",
               drop_id_field: "mint_id",
-              receiver_id: "keypom-beta-nfts.testnet",
+              receiver_id: NFT_CONTRACT_NAME,
               method_name: "nft_mint",
               args: "",
               // How much NEAR to attach to this function call.
@@ -73,6 +77,7 @@ export const createDrop = async (
   });
 };
 
+// Estimates the amount of deposit necessary to fund your keypom account and generate lazy minted NFTs.
 function estimateDeposit({
   media,
   copies,

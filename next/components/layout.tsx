@@ -14,6 +14,20 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
           <WalletButtons />
         </div>
         {children}
+        <footer>
+          <div className="min-w-full mt-8 text-center font-bold text-xs">
+            Drops are created on the{" "}
+            <a
+              className="underline"
+              href={`https://explorer${
+                NETWORK === "testnet" ? ".testnet" : ""
+              }.near.org/accounts/${CONTRACT_NAME}`}
+            >
+              {CONTRACT_NAME}
+            </a>{" "}
+            contract
+          </div>
+        </footer>
       </main>
     </WalletSelectorContextProvider>
   );

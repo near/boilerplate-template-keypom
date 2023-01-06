@@ -1,4 +1,6 @@
-import { Router, useRouter } from "next/router";
+import { KeyPairEd25519 } from "near-api-js/lib/utils";
+import { useRouter } from "next/router";
+import { NETWORK, CONTRACT_NAME } from "../constants";
 
 type Drop = any;
 type Props = {
@@ -17,6 +19,7 @@ export const ViewDrops: React.FC<Props> = ({ drops }) => {
         <NewDropCard />
         {drops.map((drop) => (
           <DropCard
+            key={drop.drop_id}
             dropId={drop.drop_id}
             media={JSON.parse(drop.metadata).media}
           />
@@ -31,25 +34,60 @@ type DropCardProps = {
   media: string;
 };
 
+// TODO refactor to use the same method as create.tsx
+const generateCsv = (fileName: string, data: string) => {
+  const file = new File([data], fileName);
+  const link = document.createElement("a");
+  link.setAttribute("visibility", "hidden");
+  // link.style.display = 'none';
+  link.href = URL.createObjectURL(file);
+  link.download = file.name;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
+// TODO refactor to use the same method as create.tsx
+const downloadLinks = async (dropId: string, secretKeys: string[]) => {
+  const keys = secretKeys.map((s) => new KeyPairEd25519(s));
+  // TODO this is hardcoded to use a specific wallet, this could be dynamic.
+  const walletUrl = `https://wallet.${
+    NETWORK === "testnet" ? `testnet.` : ``
+  }near.org`;
+  const links = keys.map(
+    ({ secretKey }) => `${walletUrl}/linkdrop/${CONTRACT_NAME}/${secretKey}`
+  );
+  generateCsv(`nft_drop_id_${dropId}_links.csv`, links.join("\r\n"));
+};
+
 const DropCard: React.FC<DropCardProps> = ({ dropId, media }) => {
+  // TODO refactor to keyStore.ts
+  const keys: string[] = JSON.parse(
+    window.localStorage.getItem(`drop#${dropId}`) || "[]"
+  );
   return (
     <div className="mb-8 p-4 max-w-sm rounded overflow-hidden bg-gray-200 grayscale hover:grayscale-0">
       <img className="w-full aspect-square" src={media} alt="NFT Image" />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2 text-gray-500">#{dropId}</div>
       </div>
-      <div className="px-6 pt-4 pb-2">
-        <button className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-          <svg
-            className="fill-current w-4 h-4 mr-2"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
+      {keys.length > 0 && (
+        <div className="px-6 pt-4 pb-2">
+          <button
+            onClick={() => downloadLinks(dropId, keys)}
+            className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
           >
-            <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
-          </svg>
-          <span>Download Links</span>
-        </button>
-      </div>
+            <svg
+              className="fill-current w-4 h-4 mr-2"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
+            </svg>
+            <span>Download Links</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 };
@@ -65,20 +103,20 @@ const NewDropCard: React.FC = () => {
       </div>
       <div className="px-6 pt-4 pb-2">
         <button
-          onClick={() => router.push("/create")}
+          onClick={() => router.push(`/create?id=${Date.now().toString()}`)}
           className="bg-emerald-200 hover:bg-emerald-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            strokeWidth="1.5"
             stroke="currentColor"
             className="w-6 h-6 mr-2"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               d="M12 4.5v15m7.5-7.5h-15"
             />
           </svg>

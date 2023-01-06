@@ -8,15 +8,16 @@ export const createSeries = async (
   accountId: string,
   {
     mint_id,
-    nft: { media, id, copies },
-  }: { mint_id: string; nft: { media: string; id: string; copies: number } }
+    nft: { media, copies },
+  }: { mint_id: number; nft: { media: string; copies: number } }
 ) => {
-  await callMethod(walletSelector, accountId, {
+  return await callMethod(walletSelector, accountId, {
     contractId: NFT_CONTRACT_NAME,
     method: "create_series",
     args: {
       mint_id,
-      metadata: JSON.stringify({ media, id, copies }),
+      metadata: { media, copies },
     },
+    deposit: "20000000000000000000000",
   });
 };
