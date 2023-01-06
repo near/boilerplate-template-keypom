@@ -7,7 +7,7 @@ export const ViewDrops: React.FC<Props> = ({ drops }) => {
   return (
     <div>
       <div>
-        <h1 className="mt-8 mb-16 text-center font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+        <h1 className="mt-8 mb-16 text-center font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-pink-400 to-sky-600">
           Your NFT Drops
         </h1>
       </div>
