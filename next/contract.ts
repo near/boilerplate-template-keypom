@@ -35,6 +35,7 @@ type CallProps = {
   args?: any;
   gas?: string;
   deposit?: string;
+  callbackUrl?: string;
 };
 
 // Call a method that changes the contract's state
@@ -47,11 +48,13 @@ export const callMethod = async (
     args = {},
     gas = THIRTY_TGAS,
     deposit = NO_DEPOSIT,
+    callbackUrl,
   }: CallProps
 ) => {
   const wallet = await walletSelector.wallet();
   // Sign a transaction with the "FunctionCall" action
   return await wallet.signAndSendTransaction({
+    callbackUrl,
     signerId: accountId,
     receiverId: contractId,
     actions: [
