@@ -15,7 +15,7 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
         </div>
         {children}
         <footer>
-          <div className="min-w-full mt-8 text-center font-bold text-xs">
+          <div className="min-w-full mt-8 text-center font-bold text-xs opacity-25">
             Drops are created on the{" "}
             <a
               className="underline"
