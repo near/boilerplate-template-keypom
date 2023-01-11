@@ -2,17 +2,22 @@ import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import { useWalletSelector } from "./WalletSelectorContext";
+import { useRouter } from "next/router";
 
 const AccountDropdown: React.FC = () => {
+  const router = useRouter();
   const { modal, accounts, accountId, selector } = useWalletSelector();
 
   const handleSignOut = async () => {
     const wallet = await selector.wallet();
 
-    wallet.signOut().catch((err) => {
+    try {
+      await wallet.signOut();
+    } catch (err) {
       console.log("Failed to sign out");
       console.error(err);
-    });
+    }
+    router.reload();
   };
 
   const handleSwitchWallet = () => {
