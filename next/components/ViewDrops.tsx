@@ -1,6 +1,8 @@
 import { KeyPairEd25519 } from "near-api-js/lib/utils";
 import { useRouter } from "next/router";
 import { NETWORK, CONTRACT_NAME } from "../constants";
+import { getKeysForDrop } from "../keyStore";
+import { downloadLinks } from "../links";
 
 type Drop = any;
 type Props = {
@@ -34,37 +36,8 @@ type DropCardProps = {
   media: string;
 };
 
-// TODO refactor to use the same method as create.tsx
-const generateCsv = (fileName: string, data: string) => {
-  const file = new File([data], fileName);
-  const link = document.createElement("a");
-  link.setAttribute("visibility", "hidden");
-  // link.style.display = 'none';
-  link.href = URL.createObjectURL(file);
-  link.download = file.name;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
-
-// TODO refactor to use the same method as create.tsx
-const downloadLinks = async (dropId: string, secretKeys: string[]) => {
-  const keys = secretKeys.map((s) => new KeyPairEd25519(s));
-  // TODO this is hardcoded to use a specific wallet, this could be dynamic.
-  const walletUrl = `https://wallet.${
-    NETWORK === "testnet" ? `testnet.` : ``
-  }near.org`;
-  const links = keys.map(
-    ({ secretKey }) => `${walletUrl}/linkdrop/${CONTRACT_NAME}/${secretKey}`
-  );
-  generateCsv(`nft_drop_id_${dropId}_links.csv`, links.join("\r\n"));
-};
-
 const DropCard: React.FC<DropCardProps> = ({ dropId, media }) => {
-  // TODO refactor to keyStore.ts
-  const keys: string[] = JSON.parse(
-    window.localStorage.getItem(`drop#${dropId}`) || "[]"
-  );
+  const keys = getKeysForDrop(dropId);
   return (
     <div className="mb-8 p-4 max-w-sm rounded overflow-hidden bg-gray-200 grayscale hover:grayscale-0">
       <img className="w-full aspect-square" src={media} alt="NFT Image" />

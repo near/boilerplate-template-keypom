@@ -21,10 +21,11 @@ const generateCsv = (fileName: string, data: string) => {
   document.body.removeChild(link);
 };
 
-export const downloadLinks = async (dropId: string, keys: KeyPairEd25519[]) => {
+// Download links for secret links.
+export const downloadLinks = async (dropId: string, keys: string[]) => {
   // TODO this is hardcoded to use a specific wallet, this could be dynamic.
   const links = keys.map(
-    ({ secretKey }) => `${WALLET_URL}/linkdrop/${CONTRACT_NAME}/${secretKey}`
+    (key) => `${WALLET_URL}/linkdrop/${CONTRACT_NAME}/${key}`
   );
   generateCsv(`nft_drop_id_${dropId}_links.csv`, links.join("\r\n"));
 };
