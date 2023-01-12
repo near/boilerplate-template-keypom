@@ -17,13 +17,13 @@ export const ViewDrops: React.FC<Props> = ({ drops }) => {
           Your NFT Drops
         </h1>
       </div>
-      <div className="mx-auto columns-1 md:columns-2 lg:columns-3">
+      <div className="p-16 mx-auto columns-1 md:columns-2 lg:columns-3">
         <NewDropCard />
         {drops.map((drop) => (
           <DropCard
             key={drop.drop_id}
             dropId={drop.drop_id}
-            media={JSON.parse(drop.metadata).media}
+            media={JSON.parse(drop.metadata)?.media || ""}
           />
         ))}
       </div>
@@ -76,8 +76,10 @@ const NewDropCard: React.FC = () => {
       </div>
       <div className="px-6 pt-4 pb-2">
         <button
-          onClick={() => router.push(`/create?id=${Date.now().toString()}`)}
-          className="bg-emerald-200 hover:bg-emerald-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
+          onClick={() =>
+            router.push(`/create/nft-series/1?id=${Date.now().toString()}`)
+          }
+          className="bg-emerald-200 hover:bg-emerald-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center focus:border-indigo-300 focus:ring-indigo-300"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
