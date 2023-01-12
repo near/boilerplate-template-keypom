@@ -2,7 +2,7 @@ import { WalletSelector } from "@near-wallet-selector/core";
 import { CONTRACT_NAME, NFT_CONTRACT_NAME } from "./constants";
 import { callMethod, viewMethod } from "./contract";
 
-const FUNC_CALL_ATTACHED_DEPOSIT = "1000000000000000000000";
+const FUNC_CALL_ATTACHED_DEPOSIT = "10000000000000000000000";
 
 export const getDropInfo = async (
   walletSelector: WalletSelector,
@@ -41,7 +41,8 @@ type CreateDrop = {
 export const createDrop = async (
   walletSelector: WalletSelector,
   accountId: string,
-  drop: CreateDrop
+  drop: CreateDrop,
+  metadata: any
 ) => {
   const {
     drop: { dropId, keys, initialDeposit },
@@ -59,7 +60,7 @@ export const createDrop = async (
       // How much NEAR should a claimed account start with.
       deposit_per_use: initialDeposit,
       // Add whatever metadata you'd like for your drop.
-      // metadata: JSON.stringify({ pagodaTemplate: true }),
+      metadata: JSON.stringify(metadata),
       config: {
         uses_per_key: 1,
         usage: {

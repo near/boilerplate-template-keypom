@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useWalletSelector } from "./WalletSelectorContext";
 import { getKeysForDrop } from "../keyStore";
 import * as keypomContract from "../keypom-contract";
+import * as nftSeriesContract from "../nft-series-contract";
 import { KeyPairEd25519 } from "near-api-js/lib/utils";
 
 type SaveDropFormProps = {
@@ -35,13 +36,28 @@ export default function SaveDropForm({ dropId }: SaveDropFormProps) {
     const secretKeys = getKeysForDrop(dropId);
     const keys = secretKeys.map((s) => new KeyPairEd25519(s));
 
-    await keypomContract.createDrop(selector, accountId, {
-      drop: {
-        dropId,
-        keys: keys.map(({ publicKey }) => publicKey.toString()),
-        initialDeposit: initDeposit,
-      },
+    const {
+      metadata: { media, copies },
+    } = await nftSeriesContract.getSeries(selector, {
+      mint_id: parseInt(dropId),
     });
+    const metadata = {
+      media,
+      copies,
+    };
+
+    await keypomContract.createDrop(
+      selector,
+      accountId,
+      {
+        drop: {
+          dropId,
+          keys: keys.map(({ publicKey }) => publicKey.toString()),
+          initialDeposit: initDeposit,
+        },
+      },
+      metadata
+    );
 
     // Go back to view all drops
     router.push("/");

@@ -29,9 +29,11 @@ export const getSeries = async (
   walletSelector: WalletSelector,
   args: { mint_id: number; series_id?: number }
 ) => {
-  return await viewMethod(walletSelector, {
+  const response = await viewMethod(walletSelector, {
     contractId: NFT_CONTRACT_NAME,
     method: "get_series_info",
     args,
   });
+  console.log("NFTSERIES", response);
+  return response;
 };
