@@ -30,6 +30,20 @@ export const getDrops = async (
   return response;
 };
 
+export const deleteDrop = async (
+  walletSelector: WalletSelector,
+  accountId: string,
+  dropId: string
+) => {
+  await callMethod(walletSelector, accountId, {
+    contractId: CONTRACT_NAME,
+    method: "delete_keys",
+    args: { drop_id: dropId },
+    // It can take 200+ GAS to delete up to 100 links
+    gas: "300000000000000",
+  });
+};
+
 type CreateDrop = {
   drop: {
     dropId?: string;

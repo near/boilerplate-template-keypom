@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ViewDrops } from "../components/ViewDrops";
+import ViewDrops from "../components/ViewDrops";
 import { useWalletSelector } from "../components/WalletSelectorContext";
 import * as keypom from "../keypom-contract";
 
