@@ -8,8 +8,8 @@ const SignInPrompt = () => {
       </h1>
       <div className="w-1/4 mx-auto mb-32">
         <p className="font-bold text-2xl">
-          This template shows you how to get started creating link drops with
-          Keypom. Connect your wallet to get started.
+          This template shows you how to get started creating NFT link drops
+          with Keypom. Connect your wallet to get started creating drops.
         </p>
         <p className="font-medium text-xl pt-8">
           Do not worry, this app runs in the test network (&quot;testnet&quot;).
