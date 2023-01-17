@@ -87,7 +87,7 @@ export default function CreateNftSeriesForm({
           name="copies"
           id="copies"
           min="1"
-          max="100000"
+          max="100"
           onChange={(e) => setCopies(e.target.value)}
           className="p-2 placeholder-gray-400 placeholder-opacity-40 mt-1 block w-full rounded-md border-gray-300 focus:border-indigo-300 focus:ring-indigo-300 text-lg"
         />

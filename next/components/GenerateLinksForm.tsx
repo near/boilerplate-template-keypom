@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useWalletSelector } from "./WalletSelectorContext";
-import * as nftSeriesContract from "../nft-series-contract";
 import { downloadLinks, generateKeys } from "../links";
 import { setKeysForDrop } from "../keyStore";
 
@@ -42,7 +41,7 @@ export default function GenerateLinksForm({ dropId }: GenerateLinksFormProps) {
           </i>
         </label>
         <input
-          type="text"
+          type="number"
           name="num-links"
           id="num-links"
           min={1}
