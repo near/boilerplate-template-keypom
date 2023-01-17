@@ -3,9 +3,9 @@ import { useState } from "react";
 import { deleteDrop } from "../keypom-contract";
 import { getKeysForDrop } from "../keyStore";
 import { downloadLinks } from "../links";
+import { Drop } from "../types";
 import { useWalletSelector } from "./WalletSelectorContext";
 
-type Drop = any;
 type Props = {
   drops: Drop[];
 };
@@ -45,12 +45,7 @@ export default function ViewDrops({ drops }: Props) {
 }
 
 type DropCardProps = {
-  drop: {
-    drop_id: string;
-    metadata: string;
-    registered_uses: number;
-    next_key_id: number;
-  };
+  drop: Drop;
 };
 
 function DropCard({ drop }: DropCardProps) {

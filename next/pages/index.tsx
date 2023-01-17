@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import ViewDrops from "../components/ViewDrops";
 import { useWalletSelector } from "../components/WalletSelectorContext";
 import * as keypom from "../keypom-contract";
+import { Drop } from "../types";
 
 export default function Home() {
   const { selector, accountId } = useWalletSelector();
-  const [drops, setDrops] = useState([]);
+  const [drops, setDrops] = useState<Drop[]>();
 
   useEffect(() => {
     if (!accountId) {
@@ -17,9 +18,5 @@ export default function Home() {
     })();
   }, [selector, accountId]);
 
-  return (
-    <div>
-      <ViewDrops drops={drops} />
-    </div>
-  );
+  return <div>{drops && <ViewDrops drops={drops} />}</div>;
 }

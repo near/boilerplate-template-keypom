@@ -1,6 +1,7 @@
 import { WalletSelector } from "@near-wallet-selector/core";
 import { CONTRACT_NAME, NFT_CONTRACT_NAME } from "./constants";
 import { callMethod, viewMethod } from "./contract";
+import { Drop } from "./types";
 
 const FUNC_CALL_ATTACHED_DEPOSIT = "10000000000000000000000";
 
@@ -14,7 +15,7 @@ export const getDropInfo = async (
     args: { drop_id },
   });
   console.log("DROP", response);
-  return response;
+  return response as Drop;
 };
 
 export const getDrops = async (
@@ -27,7 +28,7 @@ export const getDrops = async (
     args: { account_id: accountId },
   });
   console.log("DROPS", response);
-  return response;
+  return response as Drop[];
 };
 
 export const deleteDrop = async (
