@@ -1,9 +1,81 @@
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import CreateNftSeriesForm from "../../../components/CreateNftSeriesForm";
 import GenerateLinksForm from "../../../components/GenerateLinksForm";
 import SaveDropForm from "../../../components/SaveDropForm";
+import { useWalletSelector } from "../../../components/WalletSelectorContext";
+import { getKeysForDrop } from "../../../keyStore";
+import * as nftSeriesContract from "../../../nft-series-contract";
+import * as keypomContract from "../../../keypom-contract";
+
+// Checks if stepper is on the correct step and routes to correct step if necessary.
+function useStepRouter() {
+  const { accountId, selector } = useWalletSelector();
+  const router = useRouter();
+  const [isComplete, setIsComplete] = useState(false);
+  const stepId = router.query.stepId as string;
+  const dropId = router.query.id as string;
+
+  useEffect(() => {
+    if (!accountId || !dropId || !stepId) return;
+
+    (async () => {
+      let step1Complete;
+      try {
+        await nftSeriesContract.getSeries(selector, {
+          mint_id: parseInt(dropId),
+        });
+        step1Complete = true;
+      } catch {
+        step1Complete = false;
+      }
+
+      if (!step1Complete) {
+        if (stepId === "1") {
+          setIsComplete(true);
+        } else {
+          router.push(`/create/nft-series/1?id=${dropId}`);
+        }
+        return;
+      }
+
+      const step2Complete = getKeysForDrop(dropId).length > 0;
+      if (!step2Complete) {
+        if (stepId === "2") {
+          setIsComplete(true);
+        } else {
+          router.push(`/create/nft-series/2?id=${dropId}`);
+        }
+        return;
+      }
+
+      let step3Complete;
+      try {
+        await keypomContract.getDropInfo(selector, dropId);
+        step3Complete = true;
+      } catch {
+        step3Complete = false;
+      }
+
+      if (!step3Complete) {
+        if (stepId === "3") {
+          setIsComplete(true);
+        } else {
+          router.push(`/create/nft-series/3?id=${dropId}`);
+        }
+        return;
+      }
+
+      router.push("/");
+      return;
+    })();
+  }, [accountId, stepId, dropId, selector, router]);
+
+  return { isComplete };
+}
 
 export default function CreateDrop() {
+  const { isComplete: isStepRouterComplete } = useStepRouter();
   const router = useRouter();
   const stepId = router.query.stepId as string;
   const dropId = router.query.id as string;
@@ -14,6 +86,10 @@ export default function CreateDrop() {
 
   // Loading
   if (!stepId) {
+    return null;
+  }
+
+  if (!isStepRouterComplete) {
     return null;
   }
 

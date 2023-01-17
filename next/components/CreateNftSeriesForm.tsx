@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useWalletSelector } from "./WalletSelectorContext";
 import * as nftSeriesContract from "../nft-series-contract";
 
@@ -13,20 +13,6 @@ export default function CreateNftSeriesForm({
   const { selector, accountId } = useWalletSelector();
   const [media, setMedia] = useState<string>("");
   const [copies, setCopies] = useState<string>();
-
-  // Progress to step 2 if we are on step 1 but the NFT series was already created.
-  useEffect(() => {
-    if (!accountId) return;
-
-    (async () => {
-      try {
-        await nftSeriesContract.getSeries(selector, {
-          mint_id: parseInt(dropId),
-        });
-        router.push(`/create/nft-series/2?id=${dropId}`);
-      } catch {}
-    })();
-  }, [accountId, dropId, selector, router]);
 
   async function createSeries(e: React.FormEvent) {
     e.preventDefault();

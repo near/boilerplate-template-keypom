@@ -14,18 +14,6 @@ export default function SaveDropForm({ dropId }: SaveDropFormProps) {
   const { selector, accountId } = useWalletSelector();
   const [initDeposit, setInitDeposit] = useState<string>();
 
-  // Go back to view all drops if the drop was created successfully.
-  useEffect(() => {
-    if (!accountId) return;
-
-    (async () => {
-      try {
-        await keypomContract.getDropInfo(selector, dropId);
-        router.push("/");
-      } catch {}
-    })();
-  }, [accountId, dropId, selector, router]);
-
   async function createDrop(e: React.FormEvent) {
     e.preventDefault();
 
