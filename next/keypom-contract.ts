@@ -3,7 +3,7 @@ import { CONTRACT_NAME, NFT_CONTRACT_NAME } from "./constants";
 import { callMethod, viewMethod } from "./contract";
 import { Drop } from "./types";
 
-const FUNC_CALL_ATTACHED_DEPOSIT = "10000000000000000000000";
+const FUNC_CALL_ATTACHED_DEPOSIT = "10000000000000000000000"; // 0.01 N
 
 export const getDropInfo = async (
   walletSelector: WalletSelector,
@@ -108,12 +108,14 @@ function estimateDeposit({
   linkCount: number;
   initialDeposit: string;
 }) {
-  const dropStorageCost = BigInt(linkCount) * 9000000000000000000000n;
+  const baseStorageCost = 21580000000000000000000n; // 0.02158 N
+  const linkStorageCost = 6020000000000000000000n; // 0.00602 N
+  const dropStorageCost = baseStorageCost + BigInt(linkCount) * linkStorageCost;
   const linksCost = BigInt(linkCount) * BigInt(initialDeposit);
   const functionCallDeposit =
     BigInt(linkCount) * BigInt(FUNC_CALL_ATTACHED_DEPOSIT);
-  const accessKeyStorage = BigInt(linkCount) * 1000000000000000000000n;
-  const gasCost = BigInt(linkCount) * 18762600000000000000000n;
+  const accessKeyStorage = BigInt(linkCount) * 1000000000000000000000n; // 0.001 N
+  const gasCost = BigInt(linkCount) * 18762600000000000000000n; // 0.0187626 N
 
   return (
     dropStorageCost +
