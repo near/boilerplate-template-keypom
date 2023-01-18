@@ -1,7 +1,7 @@
 import * as React from "react";
 
 const ExplainText = () => (
-  <div className="mb-8 p-8 max-w-sm rounded overflow-hidden bg-gray-200 grayscale hover:grayscale-0">
+  <div className="mx-auto mb-8 p-8 max-w-sm rounded overflow-hidden bg-gray-200 grayscale hover:grayscale-0">
     <div className="divide-y divide-gray-300/50">
       <div className="space-y-6 text-base leading-7 text-gray-600">
         <p>

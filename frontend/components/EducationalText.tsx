@@ -2,7 +2,7 @@ import * as React from "react";
 
 const EducationalText = () => {
   return (
-    <div className="mb-8 p-8 max-w-sm rounded overflow-hidden bg-gray-200 grayscale hover:grayscale-0 text-gray-600">
+    <div className="mx-auto mb-8 p-8 max-w-sm rounded overflow-hidden bg-gray-200 grayscale hover:grayscale-0 text-gray-600">
       <p className="text-gray-700 text-lg font-bold">What is this?</p>
       <p className="pt-4">
         This is an NFT Link Drop app! This app allows you to create an NFT

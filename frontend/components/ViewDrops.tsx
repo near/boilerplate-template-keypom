@@ -18,7 +18,7 @@ export default function ViewDrops({ drops }: Props) {
       {drops.length === 0 && (
         <>
           <div>
-            <h1 className="mt-8 mb-16 text-center font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-pink-400 to-sky-600">
+            <h1 className="mx-4 mt-8 mb-16 text-center font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-pink-400 to-sky-600">
               Create Your First Drop
             </h1>
           </div>
@@ -32,7 +32,7 @@ export default function ViewDrops({ drops }: Props) {
       {drops.length > 0 && (
         <>
           <div>
-            <h1 className="mt-8 mb-16 text-center font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-pink-400 to-sky-600">
+            <h1 className="mx-4 mt-8 mb-16 text-center font-extrabold text-transparent text-8xl bg-clip-text bg-gradient-to-r from-pink-400 to-sky-600">
               Your NFT Drops
             </h1>
           </div>
@@ -78,7 +78,7 @@ function DropCard({ drop }: DropCardProps) {
   }
 
   return (
-    <div className="mb-8 max-w-sm rounded overflow-hidden bg-gray-200 grayscale hover:grayscale-0">
+    <div className="mx-auto mb-8 max-w-sm rounded overflow-hidden bg-gray-200 grayscale hover:grayscale-0">
       <img className="w-full aspect-square" src={media} alt="NFT Image" />
       <div className="p-4">
         <div className="px-4 py-4">
@@ -175,7 +175,7 @@ function DropCard({ drop }: DropCardProps) {
 function NewDropCard() {
   const router = useRouter();
   return (
-    <div className="mb-8 p-4 max-w-sm rounded overflow-hidden bg-gradient-to-r from-fuchsia-200 to-rose-200">
+    <div className="mx-auto mb-8 p-4 max-w-sm rounded overflow-hidden bg-gradient-to-r from-fuchsia-200 to-rose-200">
       <div className="px-6 py-4">
         <p className="text-gray-700 text-lg font-bold">
           Create a link drop of lazy-minted NFTs!
