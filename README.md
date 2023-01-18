@@ -68,8 +68,11 @@ Make sure you have a [current version of Node.js](https://nodejs.org/en/about/re
 
 Read about other [prerequisites](https://docs.near.org/develop/prerequisites) in our docs.
 
-### Installation
+Optionally create an account on [web3.storage](https://web3.storage) in order to upload files directly to IPFS from the frontend.
 
+Generate an API token on web3.storage by following [this guide](https://web3.storage/docs/how-tos/generate-api-token/) and, finally, store the token in your `frontend/.env.local` as `NEXT_PUBLIC_WEB3_STORAGE_AUTH_TOKEN`. Note this means the API token will be available to anyone who has access to your website. This might not be ideal for a production application but works great for prototyping.
+
+### Installation
 
 Install all dependencies:
 

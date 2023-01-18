@@ -8,3 +8,5 @@ export const NETWORK =
 export const WALLET_URL = `https://wallet.${
   NETWORK === "testnet" ? `testnet.` : ``
 }near.org`;
+
+export const WEB3_STORAGE_AUTH_TOKEN = process.env.NEXT_PUBLIC_WEB3_STORAGE_AUTH_TOKEN;
