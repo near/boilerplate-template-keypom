@@ -39,7 +39,6 @@
   - [Step 0: Install near-cli (optional)](#step-0-install-near-cli-optional)
   - [Step 1: Create an account for the contract](#step-1-create-an-account-for-the-contract)
   - [Step 2: deploy the contract](#step-2-deploy-the-contract)
-  - [Step 3: set contract name in your frontend code](#step-3-set-contract-name-in-your-frontend-code)
 - [Troubleshooting](#troubleshooting)
   - [Roadmap](#roadmap)
   - [Support](#support)
@@ -100,7 +99,7 @@ Exploring The Code
 
 1. The pre-built smart-contract code lives in the `/contracts` folder. This app is built from [Keypom's NFT tutorial series app](https://github.com/keypom/nft-tutorial-series). In blockchain apps the smart contract is the "backend" of your app.
 2. The frontend code lives in the `/frontend` folder. `/frontend/pages/index.tsx` is a great
-   place to start exploring. Note that it uses `/frontend/keypom-contract.ts`,
+   place to start exploring. Note that it uses `/frontend/contracts/keypom-contract.ts`,
    this is your entrypoint to learn how the frontend connects to the NEAR blockchain.
 
 

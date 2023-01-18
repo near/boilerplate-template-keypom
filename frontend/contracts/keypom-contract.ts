@@ -1,5 +1,5 @@
 import { WalletSelector } from "@near-wallet-selector/core";
-import { CONTRACT_NAME, NFT_CONTRACT_NAME } from "./constants";
+import { CONTRACT_NAME, NFT_CONTRACT_NAME } from "../constants";
 import { callMethod, viewMethod } from "./contract";
 import { Drop } from "./types";
 

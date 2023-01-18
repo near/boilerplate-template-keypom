@@ -1,5 +1,5 @@
 import { WalletSelector } from "@near-wallet-selector/core";
-import { NFT_CONTRACT_NAME } from "./constants";
+import { NFT_CONTRACT_NAME } from "../constants";
 import { callMethod, viewMethod } from "./contract";
 
 // In order to create a series on this contract, you will need to be an approved creator.

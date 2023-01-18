@@ -2,8 +2,8 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useWalletSelector } from "./WalletSelectorContext";
 import { getKeysForDrop } from "../keyStore";
-import * as keypomContract from "../keypom-contract";
-import * as nftSeriesContract from "../nft-series-contract";
+import * as keypomContract from "../contracts/keypom-contract";
+import * as nftSeriesContract from "../contracts/nft-series-contract";
 import { KeyPairEd25519 } from "near-api-js/lib/utils";
 
 type SaveDropFormProps = {

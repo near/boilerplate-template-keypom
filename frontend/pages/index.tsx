@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import ViewDrops from "../components/ViewDrops";
 import { useWalletSelector } from "../components/WalletSelectorContext";
-import * as keypom from "../keypom-contract";
-import { Drop } from "../types";
+import * as keypom from "../contracts/keypom-contract";
+import { Drop } from "../contracts/types";
 
 export default function Home() {
   const { selector, accountId } = useWalletSelector();

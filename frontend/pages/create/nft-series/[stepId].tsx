@@ -5,8 +5,8 @@ import GenerateLinksForm from "../../../components/GenerateLinksForm";
 import SaveDropForm from "../../../components/SaveDropForm";
 import { useWalletSelector } from "../../../components/WalletSelectorContext";
 import { getKeysForDrop } from "../../../keyStore";
-import * as nftSeriesContract from "../../../nft-series-contract";
-import * as keypomContract from "../../../keypom-contract";
+import * as nftSeriesContract from "../../../contracts/nft-series-contract";
+import * as keypomContract from "../../../contracts/keypom-contract";
 
 // Checks if stepper is on the correct step and routes to correct step if necessary.
 function useStepRouter() {

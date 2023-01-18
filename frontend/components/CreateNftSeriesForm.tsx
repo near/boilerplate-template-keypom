@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useWalletSelector } from "./WalletSelectorContext";
-import * as nftSeriesContract from "../nft-series-contract";
+import * as nftSeriesContract from "../contracts/nft-series-contract";
 
 type CreateNftSeriesFormProps = {
   dropId: string;

@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { deleteDrop } from "../keypom-contract";
+import { deleteDrop } from "../contracts/keypom-contract";
 import { getKeysForDrop } from "../keyStore";
 import { downloadLinks } from "../links";
-import { Drop } from "../types";
+import { Drop } from "../contracts/types";
 import EducationalText from "./EducationalText";
 import ExplainText from "./ExplainText";
 import { useWalletSelector } from "./WalletSelectorContext";
