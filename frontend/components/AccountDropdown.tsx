@@ -17,7 +17,7 @@ const AccountDropdown: React.FC = () => {
       console.log("Failed to sign out");
       console.error(err);
     }
-    router.reload();
+    router.push('/');
   };
 
   const handleSwitchWallet = () => {
