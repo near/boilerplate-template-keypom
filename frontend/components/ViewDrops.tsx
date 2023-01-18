@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { deleteDrop } from "../contracts/keypom-contract";
 import { getKeysForDrop } from "../keyStore";
 import { downloadLinks } from "../links";
@@ -36,7 +36,7 @@ export default function ViewDrops({ drops }: Props) {
               Your NFT Drops
             </h1>
           </div>
-          <div className="p-16 mx-auto columns-1 md:columns-2 lg:columns-3">
+          <div className="p-16 mx-auto columns-1 lg:columns-2 xl:columns-3">
             <NewDropCard />
             <EducationalText />
             <ExplainText />
@@ -58,6 +58,7 @@ function DropCard({ drop }: DropCardProps) {
   const { selector, accountId } = useWalletSelector();
   const router = useRouter();
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isPixelArt, setIsPixelArt] = useState(false);
   const dropId = drop.drop_id;
   const keys = getKeysForDrop(dropId);
   const dropMetadata = JSON.parse(drop.metadata);
@@ -65,6 +66,15 @@ function DropCard({ drop }: DropCardProps) {
   const copies = dropMetadata?.copies;
   const totalKeys = drop.next_key_id;
   const totalUsedKeys = totalKeys - drop.registered_uses;
+
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => {
+      setIsPixelArt(img.naturalHeight < 256 && img.naturalWidth < 256);
+    };
+    img.onerror = (err) => console.log("Failed to get image data", err);
+    img.src = media;
+  }, media);
 
   async function deleteKeys() {
     setIsDeleting(true);
@@ -79,7 +89,12 @@ function DropCard({ drop }: DropCardProps) {
 
   return (
     <div className="mx-auto mb-8 max-w-sm rounded overflow-hidden bg-gray-200 grayscale hover:grayscale-0">
-      <img className="p-4 w-full aspect-square" src={media} alt="NFT Image" />
+      <img
+        className="p-4 w-full aspect-square"
+        style={isPixelArt ? { imageRendering: "pixelated" } : {}}
+        src={media}
+        alt="NFT Image"
+      />
       <div className="p-4">
         <div className="px-4 py-4">
           <div className="font-bold text-xl mb-2 text-gray-500">#{dropId}</div>
