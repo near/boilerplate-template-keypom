@@ -22,7 +22,7 @@ export default function ViewDrops({ drops }: Props) {
               Create Your First Drop
             </h1>
           </div>
-          <div className="max-w-md p-16 mx-auto columns-1 lg:columns-2 xl:columns-3">
+          <div className="p-16 mx-auto columns-1 lg:columns-2 xl:columns-3">
             <NewDropCard />
             <EducationalText />
             <ExplainText />
