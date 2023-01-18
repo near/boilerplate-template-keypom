@@ -58,7 +58,7 @@ export default function SaveDropForm({ dropId }: SaveDropFormProps) {
           <legend className="contents text-lg font-bold text-gray-200">
             Initial Account Deposit
           </legend>
-          <p className="text-md font-medium hover:opacity-100 opacity-40">
+          <p className="font-medium hover:opacity-100 opacity-40">
             <i>This is the NEAR amount you will give to the link's claimer.</i>
           </p>
           <div className="mt-4 space-y-4">
@@ -77,7 +77,7 @@ export default function SaveDropForm({ dropId }: SaveDropFormProps) {
                 className="ml-3 block text-lg font-bold text-gray-200"
               >
                 <span className="font-mono">0.008 Ⓝ</span>{" "}
-                <i className="text-md font-medium hover:opacity-100 opacity-40">
+                <i className="font-medium hover:opacity-100 opacity-40">
                   - enough to claim the NFT
                 </i>
               </label>
@@ -97,7 +97,7 @@ export default function SaveDropForm({ dropId }: SaveDropFormProps) {
                 className="ml-3 block text-lg font-bold text-gray-200"
               >
                 <span className="font-mono">0.015 Ⓝ</span>{" "}
-                <i className="text-md font-medium hover:opacity-100 opacity-40">
+                <i className="font-medium hover:opacity-100 opacity-40">
                   - after claiming, enough to cover a couple transactions
                 </i>
               </label>
@@ -117,7 +117,7 @@ export default function SaveDropForm({ dropId }: SaveDropFormProps) {
                 className="ml-3 block text-lg font-bold text-gray-200"
               >
                 <span className="font-mono">0.020 Ⓝ</span>{" "}
-                <i className="text-md font-medium hover:opacity-100 opacity-40">
+                <i className="font-medium hover:opacity-100 opacity-40">
                   - enough for several transactions
                 </i>
               </label>

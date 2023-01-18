@@ -36,7 +36,7 @@ export default function GenerateLinksForm({ dropId }: GenerateLinksFormProps) {
           className="block text-lg font-bold text-gray-200"
         >
           Number of Links{" "}
-          <i className="text-md font-medium hover:opacity-100 opacity-40">
+          <i className="font-medium hover:opacity-100 opacity-40">
             - the number of links in this drop
           </i>
         </label>
