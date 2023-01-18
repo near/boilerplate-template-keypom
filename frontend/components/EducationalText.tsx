@@ -53,12 +53,12 @@ const EducationalText = () => {
           <code className="text-sm font-bold text-gray-900">
             ./contracts/nft-series/nft-series.wasm
           </code>{" "}
-          – but you can view the source code for Keypom{" "}
+          – but you can view the source code for the NFT series contract{" "}
           <a
             className="text-sky-500 hover:text-sky-600"
             target="_blank"
             rel="noreferrer"
-            href="https://github.com/keypom/keypom"
+            href="https://github.com/keypom/nft-tutorial-series"
           >
             here
           </a>
