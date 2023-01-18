@@ -50,6 +50,12 @@ export default function CreateNftSeriesForm({
     setUploadingFile(false);
   }
 
+  async function fileDrop(e: any) {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    await uploadFile({ target: { files } });
+  }
+
   return (
     <form onSubmit={createSeries}>
       <p className="block text-lg font-bold text-gray-200">
@@ -60,7 +66,12 @@ export default function CreateNftSeriesForm({
       </p>
       <div className={uploadingFile ? "animate-pulse" : ""}>
         {WEB3_STORAGE_AUTH_TOKEN && (
-          <div className="">
+          <div
+            onDrop={fileDrop}
+            onDragOver={(e) => e.preventDefault()}
+            onDragEnter={(e) => e.preventDefault()}
+            onDragLeave={(e) => e.preventDefault()}
+          >
             <label className="flex justify-center w-full h-32 p-2 border-4 border-gray-200 border-dashed rounded-md appearance-none cursor-pointer hover:border-opacity-100 border-opacity-40 focus:outline-none">
               <span className="flex items-center space-x-2">
                 <svg
