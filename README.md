@@ -90,6 +90,10 @@ You also need to add keypom as an approved minter to mint NFTs on your behalf, a
     
     near call <neardev-account> add_approved_minter '{"account_id":"beta.keypom.testnet"}' --accountId <YOUR_ACCOUNT>
 
+By default, only the owner will be able to create NFT series on this contract. You can optionally add anyone else as an approved creator by running:
+
+    near call <neardev-account> add_approved_creator '{"account_id":"<APPROVED_ACCOUNT>"}' --accountId <YOUR_ACCOUNT>
+
 Usage
 =====
 
