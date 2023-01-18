@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "license": "(MIT AND Apache-2.0)",
   "scripts": {
-    "start": "cd frontend && npm run start",
+    "dev": "npm run deploy:check && cd frontend && npm run dev",
+    "start": "npm run deploy:check && cd frontend && npm run start",
     "deploy": "cd contracts && ./dev-deploy.sh",
     "build": "cd frontend && npm run build",
     "postinstall": "cd frontend && npm install",
     "prepare": "husky install",
     "lint": "eslint .",
-    "prettier:check": "cd frontend && npm run prettier:check"
+    "prettier:check": "cd frontend && npm run prettier:check",
+    "deploy:check": "cd contracts && ./check-deploy.sh && cd .."
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",
