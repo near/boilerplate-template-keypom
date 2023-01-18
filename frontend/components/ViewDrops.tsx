@@ -79,7 +79,7 @@ function DropCard({ drop }: DropCardProps) {
 
   return (
     <div className="mx-auto mb-8 max-w-sm rounded overflow-hidden bg-gray-200 grayscale hover:grayscale-0">
-      <img className="w-full aspect-square" src={media} alt="NFT Image" />
+      <img className="p-4 w-full aspect-square" src={media} alt="NFT Image" />
       <div className="p-4">
         <div className="px-4 py-4">
           <div className="font-bold text-xl mb-2 text-gray-500">#{dropId}</div>
