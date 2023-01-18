@@ -5,8 +5,8 @@ const ExplainText = () => (
     <div className="divide-y divide-gray-300/50">
       <div className="space-y-6 text-base leading-7 text-gray-600">
         <p>
-          This is a frontend React boilerplate template including Next.js and
-          Tailwind CSS
+          This app is also a frontend React boilerplate template including
+          Next.js and Tailwind CSS
         </p>
         <p>Next steps:</p>
         <ul className="space-y-4">

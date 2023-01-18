@@ -4,6 +4,7 @@ import { deleteDrop } from "../keypom-contract";
 import { getKeysForDrop } from "../keyStore";
 import { downloadLinks } from "../links";
 import { Drop } from "../types";
+import EducationalText from "./EducationalText";
 import ExplainText from "./ExplainText";
 import { useWalletSelector } from "./WalletSelectorContext";
 
@@ -23,6 +24,7 @@ export default function ViewDrops({ drops }: Props) {
           </div>
           <div className="max-w-md p-16 mx-auto sm:columns-1 columns-2">
             <NewDropCard />
+            <EducationalText />
             <ExplainText />
           </div>
         </>
@@ -36,6 +38,7 @@ export default function ViewDrops({ drops }: Props) {
           </div>
           <div className="p-16 mx-auto columns-1 md:columns-2 lg:columns-3">
             <NewDropCard />
+            <EducationalText />
             <ExplainText />
             {drops.map((drop) => (
               <DropCard key={drop.drop_id} drop={drop} />
