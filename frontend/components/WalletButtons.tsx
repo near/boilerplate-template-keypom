@@ -2,7 +2,7 @@ import AccountDropdown from "./AccountDropdown";
 import { useWalletSelector } from "./WalletSelectorContext";
 
 export const WalletButtons: React.FC = () => {
-  const { modal, accountId, selector } = useWalletSelector();
+  const { modal, accountId } = useWalletSelector();
   const handleSignIn = () => {
     modal.show();
   };

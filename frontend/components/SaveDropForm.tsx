@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useWalletSelector } from "./WalletSelectorContext";
 import { getKeysForDrop } from "../keyStore";
 import * as keypomContract from "../contracts/keypom-contract";
