@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { useWalletSelector } from "./WalletSelectorContext";
-import { downloadLinks, generateKeys } from "../links";
-import { setKeysForDrop } from "../keyStore";
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { useWalletSelector } from './WalletSelectorContext';
+import { downloadLinks, generateKeys } from '../links';
+import { setKeysForDrop } from '../keyStore';
 
 type GenerateLinksFormProps = {
   dropId: string;
@@ -31,14 +31,8 @@ export default function GenerateLinksForm({ dropId }: GenerateLinksFormProps) {
   return (
     <form onSubmit={createLinks}>
       <div>
-        <label
-          htmlFor="num-links"
-          className="block text-lg font-bold text-gray-200"
-        >
-          Number of Links{" "}
-          <i className="font-medium hover:opacity-100 opacity-40">
-            - the number of links in this drop
-          </i>
+        <label htmlFor="num-links" className="block text-lg font-bold text-gray-200">
+          Number of Links <i className="font-medium hover:opacity-100 opacity-40">- the number of links in this drop</i>
         </label>
         <input
           type="number"
@@ -56,11 +50,7 @@ export default function GenerateLinksForm({ dropId }: GenerateLinksFormProps) {
         type="submit"
         className="w-48 mt-8 bg-lime-200 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center hover:bg-lime-400 focus:border-indigo-300 focus:ring-indigo-300"
       >
-        <svg
-          className="fill-current w-4 h-4 mr-2"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-        >
+        <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
           <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
         </svg>
         <span>Download Links</span>

@@ -1,12 +1,13 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { deleteDrop } from "../contracts/keypom-contract";
-import { getKeysForDrop } from "../keyStore";
-import { downloadLinks } from "../links";
-import { Drop } from "../contracts/types";
-import EducationalText from "./EducationalText";
-import ExplainText from "./ExplainText";
-import { useWalletSelector } from "./WalletSelectorContext";
+/* eslint-disable @next/next/no-img-element */
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { deleteDrop } from '../contracts/keypom-contract';
+import { getKeysForDrop } from '../keyStore';
+import { downloadLinks } from '../links';
+import { Drop } from '../contracts/types';
+import EducationalText from './EducationalText';
+import ExplainText from './ExplainText';
+import { useWalletSelector } from './WalletSelectorContext';
 
 type Props = {
   drops: Drop[];
@@ -62,7 +63,7 @@ function DropCard({ drop }: DropCardProps) {
   const dropId = drop.drop_id;
   const keys = getKeysForDrop(dropId);
   const dropMetadata = JSON.parse(drop.metadata);
-  const media = dropMetadata?.media || "";
+  const media = dropMetadata?.media || '';
   const copies = dropMetadata?.copies;
   const totalKeys = drop.next_key_id;
   const totalUsedKeys = totalKeys - drop.registered_uses;
@@ -72,9 +73,9 @@ function DropCard({ drop }: DropCardProps) {
     img.onload = () => {
       setIsPixelArt(img.naturalHeight < 256 && img.naturalWidth < 256);
     };
-    img.onerror = (err) => console.log("Failed to get image data", err);
+    img.onerror = (err) => console.log('Failed to get image data', err);
     img.src = media;
-  }, media);
+  }, [media]);
 
   async function deleteKeys() {
     setIsDeleting(true);
@@ -91,7 +92,7 @@ function DropCard({ drop }: DropCardProps) {
     <div className="mx-auto mb-8 max-w-sm rounded overflow-hidden bg-gray-200 grayscale hover:grayscale-0">
       <img
         className="p-4 w-full aspect-square"
-        style={isPixelArt ? { imageRendering: "pixelated" } : {}}
+        style={isPixelArt ? { imageRendering: 'pixelated' } : {}}
         src={media}
         alt="NFT Image"
       />
@@ -102,9 +103,7 @@ function DropCard({ drop }: DropCardProps) {
             {totalUsedKeys} out of {totalKeys} links are claimed
           </div>
           {copies && totalUsedKeys >= copies && (
-            <div className="text-lg font-bold text-gray-500">
-              All NFTs are claimed
-            </div>
+            <div className="text-lg font-bold text-gray-500">All NFTs are claimed</div>
           )}
           {copies && totalUsedKeys < copies && (
             <div className="text-lg font-bold text-gray-500">
@@ -119,11 +118,7 @@ function DropCard({ drop }: DropCardProps) {
               onClick={() => downloadLinks(dropId, keys)}
               className="absolute left-6 bottom-6 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center"
             >
-              <svg
-                className="fill-current w-4 h-4 mr-2"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
+              <svg className="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                 <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" />
               </svg>
               <span>Download Links</span>
@@ -133,7 +128,7 @@ function DropCard({ drop }: DropCardProps) {
             disabled={isDeleting}
             onClick={deleteKeys}
             className={`${
-              isDeleting ? "bg-red-400" : "bg-gray-300 hover:bg-red-400"
+              isDeleting ? 'bg-red-400' : 'bg-gray-300 hover:bg-red-400'
             } absolute right-6 bottom-6 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center`}
           >
             {!isDeleting && (
@@ -163,14 +158,7 @@ function DropCard({ drop }: DropCardProps) {
                   fill="none"
                   viewBox="0 0 24 24"
                 >
-                  <circle
-                    className="opacity-25"
-                    cx="12"
-                    cy="12"
-                    r="10"
-                    stroke="currentColor"
-                    stroke-width="4"
-                  ></circle>
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                   <path
                     className="opacity-75"
                     fill="currentColor"
@@ -192,15 +180,11 @@ function NewDropCard() {
   return (
     <div className="mx-auto mb-8 p-4 max-w-sm rounded overflow-hidden bg-gradient-to-r from-fuchsia-200 to-rose-200">
       <div className="px-6 py-4">
-        <p className="text-gray-700 text-lg font-bold">
-          Create a link drop of lazy-minted NFTs!
-        </p>
+        <p className="text-gray-700 text-lg font-bold">Create a link drop of lazy-minted NFTs!</p>
       </div>
       <div className="px-6 pt-4 pb-2">
         <button
-          onClick={() =>
-            router.push(`/create/nft-series/1?id=${Date.now().toString()}`)
-          }
+          onClick={() => router.push(`/create/nft-series/1?id=${Date.now().toString()}`)}
           className="bg-emerald-200 hover:bg-emerald-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center focus:border-indigo-300 focus:ring-indigo-300"
         >
           <svg
@@ -211,11 +195,7 @@ function NewDropCard() {
             stroke="currentColor"
             className="w-6 h-6 mr-2"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 4.5v15m7.5-7.5h-15"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
           </svg>
 
           <span>New Drop</span>

@@ -1,10 +1,10 @@
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { useWalletSelector } from "./WalletSelectorContext";
-import { getKeysForDrop } from "../keyStore";
-import * as keypomContract from "../contracts/keypom-contract";
-import * as nftSeriesContract from "../contracts/nft-series-contract";
-import { KeyPairEd25519 } from "near-api-js/lib/utils";
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { useWalletSelector } from './WalletSelectorContext';
+import { getKeysForDrop } from '../keyStore';
+import * as keypomContract from '../contracts/keypom-contract';
+import * as nftSeriesContract from '../contracts/nft-series-contract';
+import { KeyPairEd25519 } from 'near-api-js/lib/utils';
 
 type SaveDropFormProps = {
   dropId: string;
@@ -44,22 +44,20 @@ export default function SaveDropForm({ dropId }: SaveDropFormProps) {
           initialDeposit: initDeposit,
         },
       },
-      metadata
+      metadata,
     );
 
     // Go back to view all drops
-    router.push("/");
+    router.push('/');
   }
 
   return (
     <form onSubmit={createDrop}>
       <div>
         <fieldset>
-          <legend className="contents text-lg font-bold text-gray-200">
-            Initial Account Deposit
-          </legend>
+          <legend className="contents text-lg font-bold text-gray-200">Initial Account Deposit</legend>
           <p className="font-medium hover:opacity-100 opacity-40">
-            <i>This is the NEAR amount you will give to the link's claimer.</i>
+            <i>This is the NEAR amount you will give to the link&#39;s claimer.</i>
           </p>
           <div className="mt-4 space-y-4">
             <div className="flex items-center">
@@ -72,14 +70,9 @@ export default function SaveDropForm({ dropId }: SaveDropFormProps) {
                 required
                 onChange={(e) => setInitDeposit(e.target.value)}
               />
-              <label
-                htmlFor="minimal-tx"
-                className="ml-3 block text-lg font-bold text-gray-200"
-              >
-                <span className="font-mono">0.008 Ⓝ</span>{" "}
-                <i className="font-medium hover:opacity-100 opacity-40">
-                  - enough to claim the NFT
-                </i>
+              <label htmlFor="minimal-tx" className="ml-3 block text-lg font-bold text-gray-200">
+                <span className="font-mono">0.008 Ⓝ</span>{' '}
+                <i className="font-medium hover:opacity-100 opacity-40">- enough to claim the NFT</i>
               </label>
             </div>
             <div className="flex items-center">
@@ -92,11 +85,8 @@ export default function SaveDropForm({ dropId }: SaveDropFormProps) {
                 required
                 onChange={(e) => setInitDeposit(e.target.value)}
               />
-              <label
-                htmlFor="couple-tx"
-                className="ml-3 block text-lg font-bold text-gray-200"
-              >
-                <span className="font-mono">0.015 Ⓝ</span>{" "}
+              <label htmlFor="couple-tx" className="ml-3 block text-lg font-bold text-gray-200">
+                <span className="font-mono">0.015 Ⓝ</span>{' '}
                 <i className="font-medium hover:opacity-100 opacity-40">
                   - after claiming, enough to cover a couple transactions
                 </i>
@@ -112,14 +102,9 @@ export default function SaveDropForm({ dropId }: SaveDropFormProps) {
                 required
                 onChange={(e) => setInitDeposit(e.target.value)}
               />
-              <label
-                htmlFor="several-tx"
-                className="ml-3 block text-lg font-bold text-gray-200"
-              >
-                <span className="font-mono">0.020 Ⓝ</span>{" "}
-                <i className="font-medium hover:opacity-100 opacity-40">
-                  - enough for several transactions
-                </i>
+              <label htmlFor="several-tx" className="ml-3 block text-lg font-bold text-gray-200">
+                <span className="font-mono">0.020 Ⓝ</span>{' '}
+                <i className="font-medium hover:opacity-100 opacity-40">- enough for several transactions</i>
               </label>
             </div>
           </div>

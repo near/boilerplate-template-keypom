@@ -1,5 +1,5 @@
-import AccountDropdown from "./AccountDropdown";
-import { useWalletSelector } from "./WalletSelectorContext";
+import AccountDropdown from './AccountDropdown';
+import { useWalletSelector } from './WalletSelectorContext';
 
 export const WalletButtons: React.FC = () => {
   const { modal, accountId } = useWalletSelector();

@@ -1,19 +1,17 @@
-import { useRouter } from "next/router";
-import { useState } from "react";
-import { useWalletSelector } from "./WalletSelectorContext";
-import * as nftSeriesContract from "../contracts/nft-series-contract";
-import { WEB3_STORAGE_AUTH_TOKEN } from "../constants";
-import { web3StorageClient } from "../web3storage";
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import { useWalletSelector } from './WalletSelectorContext';
+import * as nftSeriesContract from '../contracts/nft-series-contract';
+import { WEB3_STORAGE_AUTH_TOKEN } from '../constants';
+import { web3StorageClient } from '../web3storage';
 
 type CreateNftSeriesFormProps = {
   dropId: string;
 };
-export default function CreateNftSeriesForm({
-  dropId,
-}: CreateNftSeriesFormProps) {
+export default function CreateNftSeriesForm({ dropId }: CreateNftSeriesFormProps) {
   const router = useRouter();
   const { selector, accountId } = useWalletSelector();
-  const [media, setMedia] = useState<string>("");
+  const [media, setMedia] = useState<string>('');
   const [uploadingFile, setUploadingFile] = useState(false);
   const [copies, setCopies] = useState<string>();
 
@@ -38,7 +36,7 @@ export default function CreateNftSeriesForm({
   }
 
   async function uploadFile(event: any) {
-    setMedia("");
+    setMedia('');
     setUploadingFile(true);
 
     const targetFile = event.target.files[0];
@@ -59,12 +57,9 @@ export default function CreateNftSeriesForm({
   return (
     <form onSubmit={createSeries}>
       <p className="block text-lg font-bold text-gray-200">
-        Choose media{" "}
-        <i className="font-medium hover:opacity-100 opacity-40">
-          - typically a URL to an image
-        </i>
+        Choose media <i className="font-medium hover:opacity-100 opacity-40">- typically a URL to an image</i>
       </p>
-      <div className={uploadingFile ? "animate-pulse" : ""}>
+      <div className={uploadingFile ? 'animate-pulse' : ''}>
         {WEB3_STORAGE_AUTH_TOKEN && (
           <div
             onDrop={fileDrop}
@@ -90,23 +85,13 @@ export default function CreateNftSeriesForm({
                 </svg>
                 {!uploadingFile && (
                   <span className="font-bold text-gray-200">
-                    Drop or{" "}
-                    <span className="text-gray-200 underline hover:opacity-100 opacity-40">
-                      browse
-                    </span>{" "}
-                    for a file to upload to IPFS or enter a URL
+                    Drop or <span className="text-gray-200 underline hover:opacity-100 opacity-40">browse</span> for a
+                    file to upload to IPFS or enter a URL
                   </span>
                 )}
-                {uploadingFile && (
-                  <span className="font-bold text-gray-200">Uploading...</span>
-                )}
+                {uploadingFile && <span className="font-bold text-gray-200">Uploading...</span>}
               </span>
-              <input
-                type="file"
-                name="media-upload"
-                className="hidden"
-                onChange={uploadFile}
-              ></input>
+              <input type="file" name="media-upload" className="hidden" onChange={uploadFile}></input>
             </label>
           </div>
         )}
@@ -125,14 +110,10 @@ export default function CreateNftSeriesForm({
         </div>
       </div>
       <div className="mt-4">
-        <label
-          htmlFor="copies"
-          className="block text-lg font-bold text-gray-200"
-        >
-          Number of copies{" "}
+        <label htmlFor="copies" className="block text-lg font-bold text-gray-200">
+          Number of copies{' '}
           <i className="font-medium hover:opacity-100 opacity-40">
-            - limit the number of NFT copies your link drop will mint regardless
-            of the number of links
+            - limit the number of NFT copies your link drop will mint regardless of the number of links
           </i>
         </label>
         <input

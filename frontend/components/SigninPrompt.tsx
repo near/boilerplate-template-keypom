@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 
 const SignInPrompt = () => {
   return (
@@ -8,13 +8,12 @@ const SignInPrompt = () => {
       </h1>
       <div className="w-1/4 mx-auto mb-32">
         <p className="font-bold text-2xl">
-          This template shows you how to get started creating NFT link drops
-          with Keypom. Connect your wallet to get started creating drops.
+          This template shows you how to get started creating NFT link drops with Keypom. Connect your wallet to get
+          started creating drops.
         </p>
         <p className="font-medium text-xl pt-8">
-          Do not worry, this app runs in the test network (&quot;testnet&quot;).
-          It works just like the main network (&quot;mainnet&quot;), but using
-          NEAR Tokens that are only for testing!
+          Do not worry, this app runs in the test network (&quot;testnet&quot;). It works just like the main network
+          (&quot;mainnet&quot;), but using NEAR Tokens that are only for testing!
         </p>
       </div>
     </div>

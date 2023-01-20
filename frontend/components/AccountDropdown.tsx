@@ -1,8 +1,8 @@
-import { Fragment } from "react";
-import { Menu, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import { useWalletSelector } from "./WalletSelectorContext";
-import { useRouter } from "next/router";
+import { Fragment } from 'react';
+import { Menu, Transition } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { useWalletSelector } from './WalletSelectorContext';
+import { useRouter } from 'next/router';
 
 const AccountDropdown: React.FC = () => {
   const router = useRouter();
@@ -14,7 +14,7 @@ const AccountDropdown: React.FC = () => {
     try {
       await wallet.signOut();
     } catch (err) {
-      console.log("Failed to sign out");
+      console.log('Failed to sign out');
       console.error(err);
     }
     router.push('/');
@@ -68,15 +68,13 @@ const AccountDropdown: React.FC = () => {
           {accounts.length > 1 && (
             <div className="py-1">
               <Menu.Item disabled>
-                <span className="text-gray-500 block px-4 py-2 text-sm">
-                  Switch Account
-                </span>
+                <span className="text-gray-500 block px-4 py-2 text-sm">Switch Account</span>
               </Menu.Item>
 
               {accounts
                 .filter((a) => a.accountId !== accountId) // remove the current selection
                 .map((account) => (
-                  <Menu.Item>
+                  <Menu.Item key={account.accountId}>
                     <a
                       href="#"
                       onClick={() => handleSwitchAccount(account.accountId)}
@@ -90,20 +88,12 @@ const AccountDropdown: React.FC = () => {
           )}
           <div className="py-1">
             <Menu.Item>
-              <a
-                href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
-                onClick={() => handleSwitchWallet()}
-              >
+              <a href="#" className="text-gray-700 block px-4 py-2 text-sm" onClick={() => handleSwitchWallet()}>
                 Switch Wallet
               </a>
             </Menu.Item>
             <Menu.Item>
-              <a
-                href="#"
-                className="text-gray-700 block px-4 py-2 text-sm"
-                onClick={() => handleSignOut()}
-              >
+              <a href="#" className="text-gray-700 block px-4 py-2 text-sm" onClick={() => handleSignOut()}>
                 Log out
               </a>
             </Menu.Item>

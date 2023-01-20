@@ -1,8 +1,8 @@
-import React from "react";
-import { NETWORK, CONTRACT_NAME } from "../constants";
-import SignInPrompt from "./SigninPrompt";
-import { WalletButtons } from "./WalletButtons";
-import { useWalletSelector } from "./WalletSelectorContext";
+import React from 'react';
+import { NETWORK, CONTRACT_NAME } from '../constants';
+import SignInPrompt from './SigninPrompt';
+import { WalletButtons } from './WalletButtons';
+import { useWalletSelector } from './WalletSelectorContext';
 
 const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { accountId } = useWalletSelector();
@@ -16,15 +16,13 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
       {accountId && children}
       <footer>
         <div className="min-w-full mt-8 text-center font-bold text-xs opacity-25">
-          Drops are created on the{" "}
+          Drops are created on the{' '}
           <a
             className="underline"
-            href={`https://explorer${
-              NETWORK === "testnet" ? ".testnet" : ""
-            }.near.org/accounts/${CONTRACT_NAME}`}
+            href={`https://explorer${NETWORK === 'testnet' ? '.testnet' : ''}.near.org/accounts/${CONTRACT_NAME}`}
           >
             {CONTRACT_NAME}
-          </a>{" "}
+          </a>{' '}
           contract
         </div>
       </footer>

@@ -1,5 +1,5 @@
-import { KeyPairEd25519 } from "near-api-js/lib/utils";
-import { CONTRACT_NAME, WALLET_URL } from "./constants";
+import { KeyPairEd25519 } from 'near-api-js/lib/utils';
+import { CONTRACT_NAME, WALLET_URL } from './constants';
 
 export const generateKeys = (num: number) => {
   const keys = [];
@@ -11,8 +11,8 @@ export const generateKeys = (num: number) => {
 
 const generateCsv = (fileName: string, data: string) => {
   const file = new File([data], fileName);
-  const link = document.createElement("a");
-  link.setAttribute("visibility", "hidden");
+  const link = document.createElement('a');
+  link.setAttribute('visibility', 'hidden');
   // link.style.display = 'none';
   link.href = URL.createObjectURL(file);
   link.download = file.name;
@@ -24,8 +24,6 @@ const generateCsv = (fileName: string, data: string) => {
 // Download links for secret links.
 export const downloadLinks = async (dropId: string, keys: string[]) => {
   // TODO this is hardcoded to use a specific wallet, this could be dynamic.
-  const links = keys.map(
-    (key) => `${WALLET_URL}/linkdrop/${CONTRACT_NAME}/${key}`
-  );
-  generateCsv(`nft_drop_id_${dropId}_links.csv`, links.join("\r\n"));
+  const links = keys.map((key) => `${WALLET_URL}/linkdrop/${CONTRACT_NAME}/${key}`);
+  generateCsv(`nft_drop_id_${dropId}_links.csv`, links.join('\r\n'));
 };
