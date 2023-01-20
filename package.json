@@ -11,7 +11,7 @@
     "prepare": "husky install",
     "lint": "eslint .",
     "prettier:check": "cd frontend && npm run prettier:check",
-    "deploy:check": "cd contracts && ./check-deploy.sh && cd .."
+    "deploy:check": "cd contracts && ./check-deploy.sh"
   },
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",
