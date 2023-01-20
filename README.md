@@ -97,9 +97,13 @@ By default, only the owner will be able to create NFT series on this contract. Y
 Usage
 =====
 
-Start your frontend:
+Start your frontend in development mode:
 
-    npm start
+    npm run dev
+
+Start your frontend in production mode:
+
+    npm run start
 
 Exploring The Code
 ==================
