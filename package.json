@@ -9,7 +9,7 @@
     "build": "cd frontend && npm run build",
     "postinstall": "cd frontend && npm install",
     "prepare": "husky install",
-    "lint": "eslint .",
+    "lint": "cd frontend && npm run lint",
     "prettier:check": "cd frontend && npm run prettier:check",
     "deploy:check": "cd contracts && ./check-deploy.sh"
   },
