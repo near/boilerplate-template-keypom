@@ -79,7 +79,7 @@ function DropCard({ drop }: DropCardProps) {
     img.onerror = (err) => {
       setImageLoading(false);
       setImageError(true);
-      return console.log('Failed to get image data', err)
+      return console.log('Failed to get image data', err);
     };
     img.src = media;
   }, [media]);
@@ -99,7 +99,7 @@ function DropCard({ drop }: DropCardProps) {
     <div className="mx-auto mb-8 max-w-sm rounded overflow-hidden bg-gray-200 grayscale hover:grayscale-0">
       <div
         className="image-wrapper p-4 w-full aspect-square flex items-center justify-center relative"
-        title={isImageError ? "Error on loading image" : ""}
+        title={isImageError ? 'Error on loading image' : ''}
       >
         {imageLoading ? (
           <svg
@@ -108,14 +108,7 @@ function DropCard({ drop }: DropCardProps) {
             fill="none"
             viewBox="0 0 24 24"
           >
-            <circle
-              className="opacity-25"
-              cx="12"
-              cy="12"
-              r="10"
-              stroke="currentColor"
-              strokeWidth={4}
-            ></circle>
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth={4}></circle>
             <path
               className="opacity-75"
               fill="currentColor"
