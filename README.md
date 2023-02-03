@@ -3,7 +3,7 @@
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/near/boilerplate-template-keypom/main/docs/images/pagoda_logo_light.png">
       <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/near/boilerplate-template-keypom/main/docs/images/pagoda_logo_dark.png">
-      <img alt="" src="https://raw.githubusercontent.com/shelegdmitriy/boilerplate-template-keypom/main/docs/images/pagoda_logo_dark.png">
+      <img alt="" src="https://raw.githubusercontent.com/near/boilerplate-template-keypom/main/docs/images/pagoda_logo_dark.png">
     </picture>
   </a>
 </h1>
