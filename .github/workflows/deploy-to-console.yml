@@ -48,7 +48,7 @@ jobs:
           npx next build
           npx next export
         env:
-          NEXT_PUBLIC_NFT_CONTRACT_NAME: "${{ fromJson(steps.upload.outputs.output).data.ContractDeployment[0].contractDeployConfig.nearAccountId }}"
+          NEXT_PUBLIC_NFT_CONTRACT_NAME: "${{ fromJson(steps.upload.outputs.output).data.contractDeployments[0].contractDeployConfig.nearAccountId }}"
           # NEXT_PUBLIC_WEB3_STORAGE_AUTH_TOKEN: TODO add your own API token from https://web3.storage to upload files to IPFS directly from the app
 
       - name: Upload Frontend
