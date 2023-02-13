@@ -145,3 +145,16 @@ export default function CreateDrop() {
     </div>
   );
 }
+
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { stepId: '1' } }, { params: { stepId: '2' } }, { params: { stepId: '3' } }],
+    fallback: true,
+  };
+}
+
+export async function getStaticProps() {
+  return {
+    props: {},
+  };
+}
