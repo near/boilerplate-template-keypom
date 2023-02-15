@@ -149,7 +149,7 @@ export default function CreateDrop() {
 export async function getStaticPaths() {
   return {
     paths: [{ params: { stepId: '1' } }, { params: { stepId: '2' } }, { params: { stepId: '3' } }],
-    fallback: true,
+    fallback: false,
   };
 }
 
