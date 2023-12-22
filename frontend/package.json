@@ -24,7 +24,7 @@
     "@near-wallet-selector/nightly-connect": "^7.4.0",
     "@near-wallet-selector/sender": "^7.4.0",
     "@near-wallet-selector/wallet-connect": "^7.4.0",
-    "@next/font": "13.1.1",
+    "@next/font": "13.5.6",
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
